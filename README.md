@@ -8,6 +8,8 @@ We have 3 python file to run here.
 3. main.py
  - the main application, will use the embedding to determine the answer for the question of the user.
 
-To run the code:
-python <file_name.py>
+
+Usage:
+- First create a openaiapikey.txt in the project root directory and put  your api key inside.
+- run the code using python <file_name.py>
 

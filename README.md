@@ -25,7 +25,8 @@ API USAGE:
 - First run our python application using "python main.py"
 
 
-API Documentation
+API Documentation:
+
 GET: /chatgpt/question
  - get all messages
 

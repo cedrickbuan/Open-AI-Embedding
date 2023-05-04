@@ -1,4 +1,4 @@
-﻿# OpenAI chatbot with embedding 
+﻿# OpenAI chatbot backend with embedding 
 
 #### REQUIREMENTS:
 

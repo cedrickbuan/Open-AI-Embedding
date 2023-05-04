@@ -5,8 +5,12 @@ import pandas as pd
 import numpy as np
 import pprint
 from openai.embeddings_utils import get_embedding, cosine_similarity
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
+
 pp = pprint.PrettyPrinter(indent=4)
 
 with open('openaiapikey.txt', 'r') as infile:  # get api key from text file

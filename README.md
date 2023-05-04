@@ -1,6 +1,6 @@
 ﻿# OpenAI chatbot with embedding 
 
-#### Requirements:
+#### REQUIREMENTS:
 
 Python 3.x
 

@@ -1,11 +1,12 @@
 import openai
 import pandas as pd
 import numpy as np
+import os
 from openai.embeddings_utils import get_embedding, cosine_similarity
+from dotenv import load_dotenv
 
-with open('openaiapikey.txt', 'r') as infile:  # get api key from text file
-    open_ai_api_key = infile.read()
-openai.api_key = open_ai_api_key
+load_dotenv()
+openai.api_key = os.environ['OPENAI_API_KEY']
 
 # Load our embeddings
 gunQAembeddings = pd.read_csv('../data/new_gun_data_embeddings.csv')
@@ -47,7 +48,7 @@ if __name__ == '__main__':
         """
         # print(prompt)
         response = openai.Completion.create(
-            engine="text-davinci-003",
+            engine=os.environ['COMPLETION_MODEL'],
             prompt=prompt,
             max_tokens=500,
             temperature=0.2,

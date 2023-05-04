@@ -3,11 +3,10 @@ import pandas as pd
 import numpy as np
 import os
 from openai.embeddings_utils import get_embedding, cosine_similarity
+from dotenv import load_dotenv
 
-FILE_PATH = os.path.abspath(os.getcwd())
-with open(FILE_PATH + '\openaiapikey.txt', 'r') as infile:  # get api key from text file
-    open_ai_api_key = infile.read()
-openai.api_key = open_ai_api_key
+load_dotenv()
+openai.api_key = os.environ['OPENAI_API_KEY']
 
 
 class ChatGPT():
@@ -65,7 +64,7 @@ class ChatGPT():
         # lets not add the max token for now. we will get an error about the max token the model can handle
         try:
             response = openai.ChatCompletion.create(
-                model="gpt-3.5-turbo",
+                model=os.environ['CHAT_COMPLETION_MODEL'],
                 messages=self.messages,
                 temperature=0.2,
                 top_p=1,
@@ -88,7 +87,7 @@ class ChatGPT():
 
         try:
             response = openai.ChatCompletion.create(
-                model="gpt-3.5-turbo",
+                model=os.environ['CHAT_COMPLETION_MODEL'],
                 messages=messages,
                 temperature=0.2,
                 top_p=1,
@@ -106,7 +105,7 @@ class ChatGPT():
 
         try:
             response = openai.ChatCompletion.create(
-                model="gpt-3.5-turbo",
+                model=os.environ['CHAT_COMPLETION_MODEL'],
                 messages=messages,
                 temperature=0.2,
                 top_p=1,

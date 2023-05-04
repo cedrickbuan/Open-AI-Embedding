@@ -4,11 +4,10 @@ import pandas as pd
 import numpy as np
 import os
 from openai.embeddings_utils import get_embedding, cosine_similarity
+from dotenv import load_dotenv
 
-FILE_PATH = os.path.abspath(os.getcwd())
-with open(FILE_PATH + '\openaiapikey.txt', 'r') as infile:  # get api key from text file
-    open_ai_api_key = infile.read()
-openai.api_key = open_ai_api_key
+load_dotenv()
+openai.api_key = os.environ['OPENAI_API_KEY']
 
 # Load our embeddings
 gunQAembeddings = pd.read_csv('data/new_gun_data_embeddings.csv')

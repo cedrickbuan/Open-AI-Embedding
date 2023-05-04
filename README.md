@@ -1,4 +1,5 @@
-﻿# OpenAI chatbot with embedding 
+﻿# OpenAI chatbot backend 
+ <sub>This openai application will answer question based on our gun database. It uses embedding to match the users questions with our list of posible question and gun descriptions</sub>
 
 #### REQUIREMENTS:
 

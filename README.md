@@ -27,10 +27,10 @@ API USAGE:
 
 API Documentation:
 
-GET: /chatgpt/question
+GET: `/chatgpt/question`
  - get all messages
 
-POST: /chatgpt/question
+POST: `/chatgpt/question`
  - ask a question
  ```
  BODY:

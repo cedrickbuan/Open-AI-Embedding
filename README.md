@@ -26,7 +26,7 @@ COMMAND (project_root/commands/) files for generating the data:
  - will create another column in our gun_data_embedding.csv to add the generated vector representation of the text.
 
 API USAGE:
-- First run our python application using **python main.py**
+- We used python FLASK for creating the api. You need to run our `main.py` file using this command **python main.py** first to be able to use the api's.
 
 API Documentation:
 

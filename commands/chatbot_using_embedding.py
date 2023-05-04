@@ -10,7 +10,8 @@ load_dotenv()
 openai.api_key = os.environ['OPENAI_API_KEY']
 
 # Load our embeddings
-gunQAembeddings = pd.read_csv('data/new_gun_data_embeddings.csv')
+gunQAembeddings = pd.read_csv(os.path.join(os.path.dirname(
+    __file__), '../data/new_gun_data_embeddings.csv'))
 gunQAembeddings["embedding"] = gunQAembeddings.embedding.apply(
     eval).apply(np.array)
 

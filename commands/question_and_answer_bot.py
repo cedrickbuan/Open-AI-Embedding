@@ -8,7 +8,7 @@ with open('openaiapikey.txt', 'r') as infile:  # get api key from text file
 openai.api_key = open_ai_api_key
 
 # Load our embeddings
-gunQAembeddings = pd.read_csv('data/new_gun_data_embeddings.csv')
+gunQAembeddings = pd.read_csv('../data/new_gun_data_embeddings.csv')
 gunQAembeddings["embedding"] = gunQAembeddings.embedding.apply(
     eval).apply(np.array)
 

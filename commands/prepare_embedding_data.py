@@ -1,9 +1,12 @@
 import csv
 import json
 import random
+import os
+
 # Read gun data from CSV file
 gun_data = []
-with open('data/gun_data.csv', 'r', encoding='utf8') as csvfile:
+FILE_PATH = os.path.abspath(os.getcwd())
+with open(os.path.join(os.path.dirname(__file__), '../data/gun_data.csv'), 'r', encoding='utf8') as csvfile:
     reader = csv.DictReader(csvfile)
     for row in reader:
         gun_data.append(row)
@@ -25,11 +28,8 @@ for row in gun_data:
     """.replace('\n', '').replace('    ', '')
     embedding_pairs.append(raw)
 
-# Print prompt and completion pairs
-# for pair in prompt_completion_pairs:
-#     print(pair)
-
-with open('data/new_gun_data_for_embedding.csv', 'w') as f:
+# save to new csv with proper format
+with open('../data/new_gun_data_for_embedding.csv', 'w') as f:
     f.write('context\n')
     for i in embedding_pairs:
         json.dump(i, f)

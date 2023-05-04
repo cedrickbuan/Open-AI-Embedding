@@ -2,9 +2,11 @@ import openai
 import pprint
 import pandas as pd
 import numpy as np
+import os
 from openai.embeddings_utils import get_embedding, cosine_similarity
 
-with open('openaiapikey.txt', 'r') as infile:  # get api key from text file
+FILE_PATH = os.path.abspath(os.getcwd())
+with open(FILE_PATH + '\openaiapikey.txt', 'r') as infile:  # get api key from text file
     open_ai_api_key = infile.read()
 openai.api_key = open_ai_api_key
 

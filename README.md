@@ -33,6 +33,40 @@ API Documentation:
 GET: `/chatgpt/question`
  - get all messages
 
+
+POST: `/chatgpt/sentiment/checkifpositive`
+ - return if 'message' you send is positive.
+ ```
+ BODY:
+ {
+    "message": "We honor your sacrifice and service to our country. You fought bravely for the freedoms and values we hold dear, andwill never forget the ultimate price you paid."
+}
+ ```
+ RESPONSE:
+ ```
+{
+    "gptanswer": "TRUE. The text is positive because it honors the sacrifice and service of the person who fought for the country. It expresses gratitude and acknowledges the bravery and courage of the person. The text also assures that the sacrifice has not gone unnoticed and the person will always be remembered as a hero.",
+    "isPositive": true
+}
+ ```
+ 
+ POST: `/chatgpt/sentiment/checkifpositiveimage`
+ - return if 'image_url' you send is positive.
+ ```
+ BODY:
+ {
+    "image_url": "https://img.freepik.com/free-photo/gorgeous-arrangement-flowers-wallpaper_23-2149057015.jpg?w=2000"
+}
+ ```
+ RESPONSE:
+ ```
+{
+    "gptanswer": "TRUE. The image is positive because its a boquet of flowers that simbolizes beauty",
+    "isPositive": true
+}
+ ```
+
+
 POST: `/chatgpt/question`
  - ask a question
  ```

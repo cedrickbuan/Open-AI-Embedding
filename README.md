@@ -92,5 +92,6 @@ POST: `/chatgpt/question`
                                                                                                       
 **NOTE**
 > This is a proof of concept application for openai
+> No database and validation yet
 
   

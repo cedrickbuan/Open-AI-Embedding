@@ -1,5 +1,13 @@
 ﻿# Open-AI-Embedding
 
+Libraries
+- pip install -U Flask
+- pip install openai
+- pip install pandas
+- pip install numpy
+- pip install pprint
+
+
 We have 3 python file to run here.
 1. prepare_embedding_data.py
  - this will create anew csv file based on the gund_data that we have

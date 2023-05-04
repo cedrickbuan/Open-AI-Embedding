@@ -11,7 +11,7 @@ Python 3.x
 - pip install pprint
 - pip install Flask-RESTful
 - pip install -U flask-cors
-
+- pip install python-dotenv
 
 FIRST TIME USAGE:
 - install python prerequisites

@@ -13,7 +13,16 @@ with open('data/gun_data.csv', 'r', encoding='utf8') as csvfile:
 embedding_pairs = list()
 
 for row in gun_data:
-    raw = f"description for {row['Name']}?. Manufacture date for {row['Name']}?. How much is the {row['Name']}?. Do you have {row['Name']}?. The gun named {row['Name']} is manufactured by {row['Manufacturer']} and uses the {row['Cartridge']} cartridge. Created from {row['Country']} and produced in the year {row['Year']}. The {row['Name']} is wort {random.randint(1, 10000)} dollars with a discount of 30-40%. You can buy the {row['Name']} using this link: https://www.pbdionisio.com/product/crosman-pumpmaster-760-bkt/"
+    raw = f"""description for {row['Name']}?. 
+    Manufacture date for {row['Name']}?. 
+    How much is the {row['Name']}?. 
+    Do you have {row['Name']}?. 
+    The gun named {row['Name']} is manufactured by {row['Manufacturer']} and uses the {row['Cartridge']} cartridge. Created from {row['Country']} and produced in the year {row['Year']}. 
+    The {row['Name']} is wort {random.randint(1, 10000)} dollars with a discount of 30-40%. 
+    You can buy the {row['Name']} using this link: https://www.pbdionisio.com/product/crosman-pumpmaster-760-bkt/. 
+    {row['Name']} image: <a href='https://www.pbdionisio.com/wp-content/uploads/1970/01/crosman-760bkt.jpg' />. 
+    {row['Name']} video: <iframe src="https://www.youtube.com/embed/PZy55e6NSqU" title="YouTube video player" allowfullscreen></iframe>. 
+    """.replace('\n', '').replace('    ', '')
     embedding_pairs.append(raw)
 
 # Print prompt and completion pairs

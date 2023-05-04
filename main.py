@@ -1,7 +1,13 @@
+from flask import Flask, request, jsonify
+from flask_restful import Api, Resource
 import openai
 import pandas as pd
 import numpy as np
+import pprint
 from openai.embeddings_utils import get_embedding, cosine_similarity
+
+app = Flask(__name__)
+pp = pprint.PrettyPrinter(indent=4)
 
 with open('openaiapikey.txt', 'r') as infile:  # get api key from text file
     open_ai_api_key = infile.read()
@@ -31,48 +37,58 @@ def search_in_question_and_answer_context(question):
     return "\n".join(context)
 
 
-if __name__ == '__main__':
-    while True:
-        user = input('\nUser:\n')
-        context = search_in_question_and_answer_context(user)
-        # gives openai the initial data for our company and how should it behave when answering
-        prompt = f"""You are PBDionisio's chatbot. PBDionisio is a company opened monday to saturday starting 8am-5pm, located at 27 Don A. Roces Ave, Diliman, Quezon City, 1103 Metro Manila. Answer the following question using only the context below. Always give the product link. If you don't know the answer for certain then suggest to browse our products here: https://www.pbdionisio.com/shop/. 
+def update_chat(message, role, content):
+    message.append({"role": role, "content": content})
+    return message
+
+
+initialMessage = f"""You are PBDionisio's chatbot. Answer the following question using only the context below. Always give the product link. If you don't know the answer for certain then suggest to browse our products here: https://www.pbdionisio.com/shop/
         
-        \nContext: {context}.
+        \nContext: PBDionisio is a company opened monday to saturday starting 8am-5pm, located at 27 Don A. Roces Ave, Diliman, Quezon City, 1103 Metro Manila. 
         
-
-        \n{user}\n.
-
-
         """
-        # print(prompt)
-        response = openai.Completion.create(
-            engine="text-davinci-003",
-            prompt=prompt,
-            max_tokens=500,
-            temperature=0.2,
-            top_p=1,
-            frequency_penalty=0
-        )
 
-        print("ChatBot: " + response['choices'][0]['text'])
+messages = [
+    {"role": "system", "content": initialMessage},
+    {"role": "user", "content": ""},
+    {"role": "assistant", "content": ""}
+
+]
 
 
-# SAMPLE CHAT RESULT
-# User:
-# where are you located?
-# ChatBot: We are located at 27 Don A. Roces Ave, Diliman, Quezon City, 1103 Metro Manila.
+@app.route('/chatgpt/question', methods=['GET'])
+def get():
+    return "this has cahtgpt"
 
-# User:
-# are you open today?
-# ChatBot:
-# Yes, we are open today from 8am to 5pm. You can browse our products here: https://www.pbdionisio.com/shop/
 
-# User:
-# do you have a beretta 9000?
-# ChatBot: Yes, we do have the Beretta 9000. You can buy it using this link: https://www.pbdionisio.com/product/crosman-pumpmaster-760-bkt/.
+@app.route('/chatgpt/question', methods=['POST'])
+def askQuestion():
+    global messages
+    userQuestion = request.json['question']
 
-# User:
-# how much is the beretta 9000?
-# ChatBot:
-# The Beretta 9000 is wort 6128 dollars with a discount of 30-40%. You can buy the Beretta 9000 using this link: https://www.pbdionisio.com/product/crosman-pumpmaster-760-bkt/
+    # add the result of the embedding to the context that will be the bases of the openai answer
+    context = search_in_question_and_answer_context(userQuestion)
+    messages = update_chat(
+        messages, "system", "Add this to the context: " + context)
+    # add the user question to the messages
+    messages = update_chat(messages, "user", userQuestion)
+
+    # get response from openai based on the context and question above
+    # lets not add the max token for now. we will get an error about the max token the model can handle
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=messages,
+        temperature=0.2,
+        top_p=1,
+        frequency_penalty=0
+    )
+
+    messages = update_chat(messages, "assistant",
+                           response['choices'][0]['message']['content'])
+
+    return jsonify({'question': request.json['question'], 'gptanswer': response['choices'][0]['message']['content']})
+
+
+pp.pprint(messages)
+if __name__ == '__main__':
+    app.run()

@@ -58,7 +58,7 @@ messages = [
 
 @app.route('/chatgpt/question', methods=['GET'])
 def get():
-    return "this has cahtgpt"
+    return jsonify(messages)
 
 
 @app.route('/chatgpt/question', methods=['POST'])

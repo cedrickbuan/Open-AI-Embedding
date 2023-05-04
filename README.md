@@ -38,6 +38,7 @@ GET: `/chatgpt/question`
  - get all messages
 
 
+
 POST: `/chatgpt/sentiment/checkifpositive`
  - return if 'message' you send is positive.
  ```
@@ -54,6 +55,8 @@ POST: `/chatgpt/sentiment/checkifpositive`
 }
  ```
  
+ 
+ 
  POST: `/chatgpt/sentiment/checkifpositiveimage`
  - return if 'image_url' you send is positive.
  ```
@@ -69,6 +72,7 @@ POST: `/chatgpt/sentiment/checkifpositive`
     "isPositive": true
 }
  ```
+
 
 
 POST: `/chatgpt/question`

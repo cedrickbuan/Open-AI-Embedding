@@ -33,4 +33,9 @@ POST: /chatgpt/question
     "gptanswer": "Sure! You can watch a video of the Akdal Ghost TR01 by following this link: <iframe src=\\https://www.youtube.com/embed/PZy55e6NSqU\\\" title=\\\"YouTube video player\\\" allowfullscreen></iframe>.",
     "question": "how about a video of akdal ghost?"
  }
+ ![image](https://user-images.githubusercontent.com/4272175/236098410-e2db110b-7c72-4d90-b322-6ac4152eae91.png)
+                                                                                                     
+                                                                                                      
+                                                                                                      
+                                                                                                      
   

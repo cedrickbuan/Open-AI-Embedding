@@ -1,6 +1,9 @@
 ﻿# OpenAI chatbot with embedding 
 
 Requirements:
+
+Python 3.x
+
 - pip install -U Flask
 - pip install openai
 - pip install pandas
@@ -9,7 +12,7 @@ Requirements:
 - pip install Flask-RESTful
 - pip install -U flask-cors
 
-COMMAND files for generating the data:
+COMMAND (project_root/commands/) files for generating the data:
 1. prepare_embedding_data.py
  - this will create a new csv file based on the gun_data that we have. We must run this first to format the csv for the embedding.
 2. create_embedding_for_gun_data.py

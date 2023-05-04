@@ -1,2 +1,4 @@
 class Constant:
-    CHATGPT_QUESTION = '/chatgpt/question'
+    URLS = {
+        'CHATGPT_QUESTION': '/chatgpt/question'
+    }

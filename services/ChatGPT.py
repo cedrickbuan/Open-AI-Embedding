@@ -26,9 +26,7 @@ class ChatGPT():
         """
 
         self.messages = [
-            {"role": "system", "content": self.initialMessage},
-            # {"role": "user", "content": ""},
-            # {"role": "assistant", "content": ""}
+            {"role": "system", "content": self.initialMessage}
         ]
 
     def create_vector(self, text):  # convert text to vector representation

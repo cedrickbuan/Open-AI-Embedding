@@ -6,7 +6,7 @@ Libraries
 - pip install pandas
 - pip install numpy
 - pip install pprint
-
+- pip install Flask-RESTful
 
 We have 3 python file to run here.
 1. prepare_embedding_data.py

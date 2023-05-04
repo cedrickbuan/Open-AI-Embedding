@@ -27,10 +27,10 @@ API USAGE:
 
 API Documentation:
 
-GET: /chatgpt/question
+GET: `/chatgpt/question`
  - get all messages
 
-POST: /chatgpt/question
+POST: `/chatgpt/question`
  - ask a question
  ```
  BODY:
@@ -50,6 +50,6 @@ POST: /chatgpt/question
                                                                                                       
                                                                                                       
 **NOTE**
-> This is a prop on concept application for openai
+> This is a proof of concept application for openai
 
   

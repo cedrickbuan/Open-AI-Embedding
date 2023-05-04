@@ -1,6 +1,6 @@
 ﻿# OpenAI chatbot with embedding 
 
-###Requirements:
+### Requirements:
 
 Python 3.x
 
@@ -13,7 +13,7 @@ Python 3.x
 - pip install -U flask-cors
 - pip install python-dotenv
 
-###FIRST TIME USAGE:
+### FIRST TIME USAGE:
 - install python prerequisites
 - create `.env` file in your root directory (same directory as your main.py) and copy the content of `.env.back`.
 - copy the content of the `.env.back` file and update the `OPENAI_API_KEY`.

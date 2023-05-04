@@ -50,6 +50,6 @@ POST: `/chatgpt/question`
                                                                                                       
                                                                                                       
 **NOTE**
-> This is a prop on concept application for openai
+> This is a proof of concept application for openai
 
   

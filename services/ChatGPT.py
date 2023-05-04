@@ -79,3 +79,39 @@ class ChatGPT():
             return e
 
         return response['choices'][0]['message']['content']
+
+    def check_if_text_is_positive(self, text):
+        messages = [
+            {"role": "system", "content": "determine if the TEXT below is positive or negative. Always say TRUE if text is positive and FALSE if text is negative. Always give explanation."},
+            {"role": "user", "content": "TEXT: " + text}
+        ]
+
+        try:
+            response = openai.ChatCompletion.create(
+                model="gpt-3.5-turbo",
+                messages=messages,
+                temperature=0.2,
+                top_p=1,
+                frequency_penalty=0
+            )
+        except Exception as e:
+            return str(e)
+        return response['choices'][0]['message']['content']
+
+    def check_if_image_is_positive(self, imageUrl):
+        messages = [
+            {"role": "system", "content": "determine if the IMAGE below is positive or negative. Return TRUE if image is positive and FALSE if image is negative. Always give explanation."},
+            {"role": "user", "content": "IMAGE: " + imageUrl}
+        ]
+
+        try:
+            response = openai.ChatCompletion.create(
+                model="gpt-3.5-turbo",
+                messages=messages,
+                temperature=0.2,
+                top_p=1,
+                frequency_penalty=0
+            )
+        except Exception as e:
+            return str(e)
+        return response['choices'][0]['message']['content']

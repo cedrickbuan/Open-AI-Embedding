@@ -20,10 +20,10 @@ COMMAND (project_root/commands/) files for generating the data:
 
 Usage:
 - First create a openaiapikey.txt in the project root directory and put  your api key inside.
-- run the code using python <main.py>
+- run the code using **python <main.py>**
 
 API USAGE:
-- First run our python application using "python main.py"
+- First run our python application using **python main.py**
 
 API Documentation:
 
@@ -49,5 +49,7 @@ POST: /chatgpt/question
                                                                                                      
                                                                                                       
                                                                                                       
-                                                                                                      
+**NOTE**
+> This is a prop on concept application for openai
+
   

@@ -1,6 +1,6 @@
 ﻿# OpenAI chatbot with embedding 
 
-Requirements:
+## Requirements:
 
 Python 3.x
 
@@ -28,7 +28,7 @@ COMMAND (project_root/commands/) files for generating the data:
 API USAGE:
 - We used python FLASK for creating the api. You need to run our `main.py` file using this command **python main.py** first to be able to use the api's.
 
-API Documentation:
+API DOCUMENTATION:
 
 GET: `/chatgpt/question`
  - get all messages

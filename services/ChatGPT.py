@@ -29,7 +29,7 @@ class ChatGPT():
         ]
 
     def create_vector(self, text):  # convert text to vector representation
-        return get_embedding(text, engine="text-embedding-ada-002")
+        return get_embedding(text, engine=os.environ['EMBEDDING_ENGINE'])
 
     def search_in_question_and_answer_context(self, question):
         question_vector = self.create_vector(question)

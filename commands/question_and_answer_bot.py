@@ -6,7 +6,7 @@ from openai.embeddings_utils import get_embedding, cosine_similarity
 from dotenv import load_dotenv
 
 load_dotenv()
-openai.api_key = os.environ['OPENAI_API_KEY']
+openai.api_key = os.getenv('OPENAI_API_KEY')
 
 # Load our embeddings
 gunQAembeddings = pd.read_csv('../data/new_gun_data_embeddings.csv')
@@ -48,7 +48,7 @@ if __name__ == '__main__':
         """
         # print(prompt)
         response = openai.Completion.create(
-            engine=os.environ['COMPLETION_MODEL'],
+            engine=os.getenv('COMPLETION_MODEL'),
             prompt=prompt,
             max_tokens=500,
             temperature=0.2,

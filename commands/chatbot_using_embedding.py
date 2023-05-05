@@ -7,7 +7,7 @@ from openai.embeddings_utils import get_embedding, cosine_similarity
 from dotenv import load_dotenv
 
 load_dotenv()
-openai.api_key = os.environ['OPENAI_API_KEY']
+openai.api_key = os.getenv('OPENAI_API_KEY')
 
 # Load our embeddings
 gunQAembeddings = pd.read_csv(os.path.join(os.path.dirname(
@@ -19,7 +19,7 @@ pp = pprint.PrettyPrinter(indent=4)
 
 
 def create_vector(text):  # convert text to vector representation
-    return get_embedding(text, engine=os.environ['EMBEDDING_ENGINE'])
+    return get_embedding(text, engine=os.getenv('EMBEDDING_ENGINE'))
 
 
 def search_in_question_and_answer_context(question):
@@ -71,7 +71,7 @@ if __name__ == '__main__':
         # get response from openai based on the context and question above
         # lets not add the max token for now. we will get an error about the max token the model can handle
         response = openai.ChatCompletion.create(
-            model=os.environ['CHAT_COMPLETION_MODEL'],
+            model=os.getenv('CHAT_COMPLETION_MODEL'),
             messages=messages,
             temperature=0.2,
             top_p=1,

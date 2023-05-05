@@ -6,7 +6,7 @@ from openai.embeddings_utils import get_embedding, cosine_similarity
 from dotenv import load_dotenv
 
 load_dotenv()
-openai.api_key = os.environ['OPENAI_API_KEY']
+openai.api_key = os.getenv('OPENAI_API_KEY')
 
 
 class ChatGPT():
@@ -29,7 +29,7 @@ class ChatGPT():
         ]
 
     def create_vector(self, text):  # convert text to vector representation
-        return get_embedding(text, engine=os.environ['EMBEDDING_ENGINE'])
+        return get_embedding(text, engine=os.getenv('EMBEDDING_ENGINE'))
 
     def search_in_question_and_answer_context(self, question):
         question_vector = self.create_vector(question)
@@ -64,7 +64,7 @@ class ChatGPT():
         # lets not add the max token for now. we will get an error about the max token the model can handle
         try:
             response = openai.ChatCompletion.create(
-                model=os.environ['CHAT_COMPLETION_MODEL'],
+                model=os.getenv('CHAT_COMPLETION_MODEL'),
                 messages=self.messages,
                 temperature=0.2,
                 top_p=1,
@@ -87,7 +87,7 @@ class ChatGPT():
 
         try:
             response = openai.ChatCompletion.create(
-                model=os.environ['CHAT_COMPLETION_MODEL'],
+                model=os.getenv('CHAT_COMPLETION_MODEL'),
                 messages=messages,
                 temperature=0.2,
                 top_p=1,
@@ -105,7 +105,7 @@ class ChatGPT():
 
         try:
             response = openai.ChatCompletion.create(
-                model=os.environ['CHAT_COMPLETION_MODEL'],
+                model=os.getenv('CHAT_COMPLETION_MODEL'),
                 messages=messages,
                 temperature=0.2,
                 top_p=1,

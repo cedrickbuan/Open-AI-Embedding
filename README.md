@@ -19,7 +19,7 @@ Python 3.x
 - install python prerequisites
 - create `.env` file in your root directory (same directory as your main.py) and copy the content of `.env.back`.
 - copy the content of the `.env.back` file and update the `OPENAI_API_KEY`.
-- run the code using **python <main.py>**
+- run the code by typing `python main.py` in your cmd while inside the project directory.
 
 #### COMMAND (project_root/commands/) files for generating the data:
 

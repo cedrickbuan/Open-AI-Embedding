@@ -114,3 +114,21 @@ class ChatGPT():
         except Exception as e:
             return str(e)
         return response['choices'][0]['message']['content']
+
+    def get_ai_advice(self, parentProblem):
+        messages = [
+            {"role": "system", "content": "You are an AI advisor for a website called Parentipity. As the pre-eminent site for parents to get paid, Parentipity creates easy-to-digest digital content and amplifies its users’ insights, bringing recognition to the creators themselves and value for everyone involved. "},
+            {"role": "user", "content": parentProblem}
+        ]
+
+        try:
+            response = openai.ChatCompletion.create(
+                model=os.getenv('CHAT_COMPLETION_MODEL'),
+                messages=messages,
+                temperature=0.2,
+                top_p=1,
+                frequency_penalty=0
+            )
+        except Exception as e:
+            return str(e)
+        return response['choices'][0]['message']['content']

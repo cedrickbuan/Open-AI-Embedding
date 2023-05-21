@@ -41,6 +41,12 @@ def checkIfPositiveImage():
     response = chatgpt.check_if_image_is_positive(request.json['image_url'])
     return jsonify({'isPositive': UTILS.checkIfHasPositive(response), 'gptanswer': response})
 
+
+@app.route(CONSTANTS.URLS['CHATGPT_ADVICE'], methods=['POST'])
+def getAdviceFromAi():
+    response = chatgpt.get_ai_advice(request.json['question'])
+    return jsonify({'gptanswer': response})
+
 ###############################
 ### END chat gpt request    ###
 ###############################
